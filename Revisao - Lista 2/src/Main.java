@@ -1,11 +1,12 @@
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static Scanner in = new Scanner(System.in);
-    public static void main(String[] args) {
-        Desafio();
+    public static void main(String[] args) throws Exception {
+        Arquivo();
     }
 
     public static void TiposPrimitivos_Q1(){
@@ -359,7 +360,7 @@ public class Main {
             }
         }
 
-        for (int i=0; i< 3; i++) {
+        for (int i=0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.println("Informe o valor para a posição na linha " + (i + 1) + " na coluna " + (j + 1) + " para a matriz padrão: ");
                 matrizPadrao[i][j] = in.nextInt();
@@ -372,7 +373,7 @@ public class Main {
             }
         }
 
-        for (int i=0; i< 5; i++) {
+        for (int i=0; i< 2; i++) {
             for (int j = 0; j < 2; j++) {
 
               if ( matrizPricipal[i][j] ==  matrizPadrao[i][j] && matrizPricipal[i+1][j] ==  matrizPadrao[i+1][j] &&
@@ -389,6 +390,152 @@ public class Main {
             System.out.println("sim");
         } else {
             System.out.println("não");
+        }
+
+    }
+
+    public static void Arquivo() throws Exception{
+
+        File arq1 = new File("C:\\Users\\gabriela_schirmer\\Documents\\arq1.txt");
+        File arq2 = new File("C:\\Users\\gabriela_schirmer\\Documents\\arq2.txt");
+
+        //A
+
+        FileWriter canalA = new FileWriter(arq2);
+        BufferedWriter operadorA = new BufferedWriter(canalA);
+
+        FileReader leitorA = new FileReader(arq1);
+
+        BufferedReader bufA = new BufferedReader(leitorA);
+
+        String linhaA;
+        while ((linhaA = bufA.readLine()) != null){
+            operadorA.write(linhaA);
+        }
+
+        leitorA.close();
+        operadorA.close();
+        canalA.close();
+
+
+        //B
+        FileWriter canalB = new FileWriter(arq2, true);
+        BufferedWriter operadorB = new BufferedWriter(canalB);
+
+        FileReader leitorB = new FileReader(arq1);
+
+        BufferedReader bufB = new BufferedReader(leitorB);
+
+        String linhaB;
+        while ((linhaB = bufB.readLine()) != null){
+            //System.out.println("Linha: "+linhaB);
+            operadorB.write(linhaB);
+        }
+
+        bufB.close();
+        operadorB.close();
+        canalB.close();
+
+        //C
+
+        FileReader leitorC = new FileReader(arq1);
+
+       BufferedReader bufC = new BufferedReader(leitorC);
+
+        String linhaC;
+        System.out.println("arq1.txt: ");
+        while ((linhaC = bufC.readLine()) != null){
+            System.out.println(linhaC);
+        }
+
+       leitorC.close();
+
+
+        //D
+
+        FileReader leitorD = new FileReader(arq2);
+
+        BufferedReader bufD = new BufferedReader(leitorD);
+
+        String linhaD;
+        System.out.println("arq2.txt: ");
+        while ((linhaD = bufD.readLine()) != null){
+            System.out.println(linhaD);
+        }
+
+        leitorD.close();
+
+
+
+    }
+
+    public static void Metodo(){
+        System.out.println("Informe um valor: ");
+        double v1 = in.nextDouble();
+        System.out.println("Informe outro valor: ");
+        double v2 = in.nextDouble();
+
+        System.out.println("Informe qual a operação aritmética que deseja realizar entre os valores: ");
+        System.out.println("1 - Adição");
+        System.out.println("2 - Subtração");
+        System.out.println("3 - Divisão");
+        System.out.println("4 - Multiplicação");
+        int menu = in.nextInt();
+
+        switch (menu){
+            case 1:
+                System.out.println("Resultado da adição: "+Adicao(v1, v2));
+                break;
+            case 2:
+                System.out.println("Resultado da subtração: "+Subtracao(v1, v2));
+                break;
+            case 3:
+                System.out.println("Resultado da divisão: "+Divisao(v1, v2));
+                break;
+            case 4:
+                System.out.println("Resultado da multiplicação: "+Multiplicacao(v1, v2));
+                break;
+            default:
+                System.out.println("Inválido");
+                break;
+        }
+
+    }
+
+    public static double Adicao(double a, double b){
+        return (a + b);
+    }
+
+    public static double Subtracao(double a, double b){
+        return (a - b);
+    }
+
+    public static double Divisao(double a, double b){
+        return (a / b);
+    }
+
+    public static double Multiplicacao(double a, double b){
+        return (a * b);
+    }
+
+
+    public static void Recursividade(){
+        System.out.println("Informe um valor: ");
+        int val = in.nextInt();
+
+        int soma = Rec(val);
+
+        System.out.println("Resultado da soma de 1 até "+val+": "+soma);
+    }
+
+    public static int Rec( int v){
+        int resultado;
+
+        if(v != 1){
+             resultado =  v + Rec(v-1);
+             return resultado;
+        } else{
+            return 1;
         }
 
     }
