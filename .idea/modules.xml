@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Estrutura_De_Dados.iml" filepath="$PROJECT_DIR$/.idea/Estrutura_De_Dados.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExmploFile/ExmploFile.iml" filepath="$PROJECT_DIR$/ExmploFile/ExmploFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Revisao - Estrutura de dados/Revisao - Estrutura de dados.iml" filepath="$PROJECT_DIR$/Revisao - Estrutura de dados/Revisao - Estrutura de dados.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Revisao - Lista 2/Revisao - Lista 2.iml" filepath="$PROJECT_DIR$/Revisao - Lista 2/Revisao - Lista 2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TesteMetodo/TesteMetodo.iml" filepath="$PROJECT_DIR$/TesteMetodo/TesteMetodo.iml" />
+    </modules>
+  </component>
+</project>

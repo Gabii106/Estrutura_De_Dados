@@ -6,7 +6,7 @@ public class Main {
 
     public static Scanner in = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
-        Arquivo();
+        Des2();
     }
 
     public static void TiposPrimitivos_Q1(){
@@ -344,10 +344,12 @@ public class Main {
     }
 
     public static void Desafio(){ //Ainda não funciona
+        int a=0, b=0, c=0, d=0;
         int matrizPricipal[][] = new int[5][5];
         int matrizPadrao[][] = new int[3][3];
         Random gerador = new Random();
         boolean contem = false;
+
 
         for (int i=0; i< 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -373,17 +375,26 @@ public class Main {
             }
         }
 
-        for (int i=0; i< 2; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i=0; i< 1; i++) {
+            for (int j = 0; j < 1; j++) {
 
-              if ( matrizPricipal[i][j] ==  matrizPadrao[i][j] && matrizPricipal[i+1][j] ==  matrizPadrao[i+1][j] &&
-                   matrizPricipal[i+2][j] ==  matrizPadrao[i+2][j] && matrizPricipal[i][j+1] ==  matrizPadrao[i][j+1] &&
-                   matrizPricipal[i][j+2] ==  matrizPadrao[i][j+2] && matrizPricipal[i+1][j+1] ==  matrizPadrao[i+1][j+1] &&
-                   matrizPricipal[i+1][j+2] ==  matrizPadrao[i+1][j+2] && matrizPricipal[i+2][j+1] ==  matrizPadrao[i+2][j+1] &&
-                   matrizPricipal[i+2][j+2] ==  matrizPadrao[i+2][j+2]){
+                a += 1;
+                b += 1;
+
+                if(a==3 && b==3){
+                    a = 0;
+                    b =0;
+                }
+
+              if ( (matrizPricipal[i][j] ==  matrizPadrao[a][b] && matrizPricipal[i+1][j] ==  matrizPadrao[a][b] &&
+                   matrizPricipal[i+2][j] ==  matrizPadrao[a][b] && matrizPricipal[i][j+1] ==  matrizPadrao[a][b] &&
+                   matrizPricipal[i][j+2] ==  matrizPadrao[a][b] && matrizPricipal[i+1][j+1] ==  matrizPadrao[a][b] &&
+                   matrizPricipal[i+1][j+2] ==  matrizPadrao[a][b] && matrizPricipal[i+2][j+1] ==  matrizPadrao[a][b] &&
+                   matrizPricipal[i+2][j+2] ==  matrizPadrao[a][b]) ){
                         contem = true;
               }
             }
+
         }
 
         if (contem){
@@ -393,6 +404,71 @@ public class Main {
         }
 
     }
+
+    public static void Des2(){
+        Scanner in = new Scanner(System.in);
+        int[][] padrao = new int[3][3];
+        Random gerador = new Random();
+        boolean contem = false;
+
+        System.out.print("Digite o número de linhas da imagem: ");
+        int numL = in.nextInt();
+        System.out.print("Digite o número de colunas da imagem: ");
+        int numC = in.nextInt();
+
+        int imagem[][] = new int[numL][numC];
+
+
+        for (int i=0; i< numL ; i++) {
+            for (int j = 0; j < numC ; j++) {
+                imagem[i][j] = gerador.nextInt(2);
+                if(j == numC-1){
+                    System.out.print(imagem[i][j]+"\n");
+                } else{
+                    System.out.print(imagem[i][j]+" ");
+                }
+            }
+        }
+
+        for (int i=0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.println("Informe o valor para a posição na linha " + (i + 1) + " na coluna " + (j + 1) + " para a matriz padrão: ");
+                padrao[i][j] = in.nextInt();
+            }
+        }
+
+
+        for (int i = 0; i <= numL - 3; i++) {
+            for (int j = 0; j <= numC - 3; j++) {
+                if (matchPattern(imagem, i, j, padrao)) {
+                    contem = true;
+                }
+            }
+        }
+
+        if(contem){
+            System.out.println("Contem");
+        } else {
+            System.out.println("Não contem");
+        }
+
+
+        in.close();
+
+    }
+
+    private static boolean matchPattern(int[][] imagem, int a, int b, int[][] padrao) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (imagem[a + i][b + j] != padrao[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
 
     public static void Arquivo() throws Exception{
 
