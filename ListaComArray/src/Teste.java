@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Teste {
     public static void main(String[] args) {
         ListaComArray lista = new ListaComArray();
@@ -13,6 +15,29 @@ public class Teste {
         lista.add(66);
         lista.add(123);
         lista.add(321);
+
+        lista.clear();
+
+        lista.add(0);
+        lista.add(1);
+        lista.add(2);
+        lista.add(3);
+        lista.add(4);
+        lista.add(5);
+        lista.add(6);
+        lista.add(7);
+        lista.add(8);
+        lista.add(9);
+        lista.add(10);
+        lista.add(11);
+        lista.add(12);
+        lista.add(10);
+
+        lista.add(10);
+        lista.add(16);
+
+        lista.removeFirt(2);
+        lista.set(1, 100);
 
         for(int i = 0; i < lista.size(); i++){
             System.out.println(lista.get(i));
@@ -45,5 +70,12 @@ public class Teste {
         } else {
             System.out.println("Não contém");
         }
+
+        System.out.println("A primeira aparição do número 6 está no indice: "+lista.indexOf(6));
+
+        System.out.println("A ultima aparição do número 10 está no indice: "+lista.lastIndexOf(10));
+
+
+        System.out.println(Arrays.toString(lista.toArray()));
     }
 }

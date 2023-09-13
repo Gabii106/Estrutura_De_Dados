@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ListaComArray {
     private Integer[] array;
     private boolean resizable;
@@ -11,7 +13,7 @@ public class ListaComArray {
         //this - sobe o escopo/ vai para o escopo da classe
         this.initialCapacity = 10;
         this.array = new Integer[x];
-        this.resizable = false;
+        this.resizable = true;
         this.counter = 0;
     }
     public boolean add(Integer obj){
@@ -27,39 +29,17 @@ public class ListaComArray {
         counter++;
         return true;
     }
-    //public boolean add(int index, Integer obj){
-        //return true;
-    //}
-
-    public int size(){
-        return this.counter;
-    }
-
-    public Integer get(int index){
-        if(index < 0 || index >= counter){
-            //Parametro é inválido
-            return null;
-        }
-        //Parametro/Posição é válido
-        return array[index];
-    }
 
     private void resizeArrayList(){
+        int tam = array.length + x;
 
-    }
+        Integer novo[] = new Integer[tam];
 
-    public boolean isEmpty(){
-        return counter == 0;
-    }
-
-    public String toString(){
-        String elementos = "";
-
-        for (int i = 0; i < counter; i++){
-            elementos += array[i] + " ";
+        for(int i = 0; i < array.length; i++){ //Percorre as posições até o tamanho do vetor original
+            novo[i] = array[i];
         }
 
-        return elementos;
+        array = novo; //Só esta atualizando o endereço de memória - Faz mudar a estrutura de memória de array para a estrutura de memória do novo, dps disso o novo deixa de existir, e o array antigo fica perdido até o garbage detector o deletar
     }
 
     public Integer remove(int index){
@@ -77,20 +57,102 @@ public class ListaComArray {
         return tmp;
     }
 
+    public boolean removeFirt(Integer valor){
+        for (int i = 0; i < counter; i++){
+            if (array[i].equals(valor)){
+                remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Integer get(int index){
+        if(index < 0 || index >= counter){
+            //Parametro é inválido
+            return null;
+        }
+        //Parametro/Posição é válido
+        return array[index];
+    }
+
+    public void clear(){
+        this.counter = 0;
+        if(resizable){
+            this.array = new Integer[initialCapacity];
+        }
+    }
+
+    public Integer set(int index, Integer elemento){
+        //Teste do indice passando por parametro
+        if(index < 0 || index >= counter){
+            return null;
+        }
+        Integer tpm = array[index];
+        array[index] = elemento;
+        return tpm;
+    }
+
+    public int size(){
+        return this.counter;
+    }
+
+    public boolean isEmpty(){
+        return counter == 0;
+    }
+
     public boolean isFull(){
-        if(resizable == false && counter == array.length){
-            return true;
+        if(!resizable){
+            return counter == array.length;
         }
         return false;
     }
 
     public boolean contains(Integer elemento){
         for (int i = 0; i < counter; i++){
-            if (array[i] == elemento) {
+            if (array[i].equals(elemento)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public int indexOf(Integer elemento){
+        int posi = -1;
+        for (int i = 0; i < counter; i++){
+            if (array[i] == elemento){
+                posi = i;
+                return posi;
+            }
+        }
+        return posi;
+    }
+
+    public int lastIndexOf(Integer elemento){
+        int posi = -1;
+        for (int i = counter-1; i >=0; i--){
+            if (array[i] == elemento){
+                posi = i;
+                return posi;
+            }
+        }
+        return posi;
+    }
+
+    public Integer[] toArray(){
+        Integer[] vet = new Integer[counter];
+        for (int i = 0; i < counter; i++){
+            vet[i] = array[i];
+        }
+        return vet;
+    }
+
+    public String toString(){
+        String elementos = "";
+        for (int i = 0; i < counter; i++){
+            elementos += array[i] + " ";
+        }
+        return elementos;
     }
 
 }
