@@ -1,12 +1,10 @@
 public class FilaComEncadeamento {
     private NoLista ini;
     private NoLista fim;
-    private int contador;
 
     public FilaComEncadeamento(){
         this.ini = null;
         this.fim = null;
-        this.contador = 0;
     }
 
     public boolean inserir(Integer valor){
@@ -20,7 +18,6 @@ public class FilaComEncadeamento {
             fim.setProximo(no);
         }
         this.fim = no;
-        contador++;
         return true;
     }
 
@@ -30,7 +27,6 @@ public class FilaComEncadeamento {
         } else {
             Integer tpm = ini.getInfo();
             this.ini = this.ini.getProximo();
-            contador--;
             return tpm;
         }
     }
@@ -39,13 +35,26 @@ public class FilaComEncadeamento {
         return (this.ini == null);
     }
 
-    public void liberar(){
+    public void libera(){
         this.ini = null;
         this.fim = null;
-        this.contador = 0;
     }
 
     public int size(){
-        return this.contador;
+        int cont = 0;
+        NoLista temp = ini;
+        boolean control = true;
+        if (ini != null) {
+            while (control) {
+                if (temp.getProximo() == null) {
+                    control = false;
+                }
+                cont++;
+                if (control) {
+                    temp = temp.getProximo();
+                }
+            }
+        }
+        return cont;
     }
 }

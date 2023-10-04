@@ -1,6 +1,6 @@
-public class Main {
-    public static void main(String[] args)  {
-        ListaComArray lista = new ListaComArray();
+public class MainListaComEncadeamento {
+    public static void main(String[] args) {
+        ListaComEncadeamento lista = new ListaComEncadeamento();
         lista.add(2);
         lista.add(77);
         lista.add(0);

@@ -12,7 +12,8 @@ public class Main {
         System.out.println(fila.vazia());
         System.out.println(fila.size());
 
-        fila.liberar();
+        fila.libera();
+
 
         System.out.println(fila.size());
 

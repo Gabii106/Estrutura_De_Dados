@@ -1,4 +1,4 @@
-public class Main {
+public class MainListaComArray {
     public static void main(String[] args)  {
         ListaComArray lista = new ListaComArray();
         lista.add(2);

@@ -22,5 +22,4 @@ public class NoLista { //NóLista
     public void setProximo(NoLista proximo) {
         this.proximo = proximo;
     }
-
 }

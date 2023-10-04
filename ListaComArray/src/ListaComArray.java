@@ -39,7 +39,7 @@ public class ListaComArray {
             novo[i] = array[i];
         }
 
-        array = novo; //Só esta atualizando o endereço de memória - Faz mudar a estrutura de memória de array para a estrutura de memória do novo, dps disso o novo deixa de existir, e o array antigo fica perdido até o garbage detector o deletar
+        array = novo;
     }
 
     public Integer remove(int index){
