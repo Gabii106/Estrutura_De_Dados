@@ -120,7 +120,7 @@ public class Ordenacao {
 
         //Calcular o meio do vetor
         int meio = (ini + fim) /2;
-        System.out.println(nivelRec + " = { "+ ini + " | "+ meio+ " | "+ fim+ " }"); //Mostra indices
+        //System.out.println(nivelRec + " = { "+ ini + " | "+ meio+ " | "+ fim+ " }"); //Mostra indices
 
         //Dividir e realizar chamadas recursivas
         mergeSortRec(v, ini , meio, nivelRec+1);
